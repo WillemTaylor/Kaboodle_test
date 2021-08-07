@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: []
+  type: ''
 };
 
 export const dropdownSlice = createSlice({
@@ -9,7 +9,7 @@ export const dropdownSlice = createSlice({
     initialState,
     reducers: {
         filterType: (state, action) => {
-            state.value.push(action.payload)
+            return { ...state, type: action.payload };
         }
     }
 })

@@ -13,7 +13,7 @@ export function TypeDropdown() {
     const types = (listings.accommodations.map((listing) => listing.type.name)).filter(onlyUnique);
 
     return (
-        <div class="menu-container">
+        <div className="menu-container">
             <button onClick={() => setIsActive(!isActive)} className="menu-trigger">
                 <span>Type</span>
             </button>

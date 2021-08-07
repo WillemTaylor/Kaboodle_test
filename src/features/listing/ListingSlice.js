@@ -1,23 +1,19 @@
-// import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-// const initialState = {
-//   value: '+',
-//   status: 'idle',
-// };
+const initialState = {
+  label: ''
+};
 
-// export const listingSlice = createSlice({
-//     name: 'listing',
-//     initialState,
-//     reducers: {
-//         toggleShowMore: (state) => {
-//             state.value = '-';
-//         },
-//         expandListing: (state) => {
-//             state.value += state.value;
-//         }
-//     }
-// })
+export const listingSlice = createSlice({
+    name: 'listing',
+    initialState,
+    reducers: {
+        filterLabel: (state, action) => {
+            return { ...state, type: action.payload };
+        },
+    }
+})
 
-// export const { toggleShowMore, expandListing } = listingSlice.actions;
+export const { filterLabel } = listingSlice.actions;
 
-// export default listingSlice.reducer;
+export default listingSlice.reducer;
