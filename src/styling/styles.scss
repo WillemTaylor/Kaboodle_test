@@ -8,7 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  background: $pure-white;
+  background: $white;
   color: $black;
 }
 
@@ -39,7 +39,8 @@ code {
 
 .App-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
   font-size: calc(10px + 2vmin);
   max-width: 1200px;
@@ -77,6 +78,9 @@ code {
   width: 47%;
   padding: 20px 10px;
   border: 2px solid $dark-blue;
+  border-radius: 5px;
+  margin: 0 0 20px 0;
+  background: $pure-white;
 
   div {
     display: flex;
@@ -90,17 +94,27 @@ code {
 
   .description {
     flex-direction: column;
-    margin: 10px 0;
+
+    h4 {
+      justify-content: center;
+      margin: 20px auto;
+      cursor: pointer;
+    }
+
+    div {
+      flex-direction: column;
+      margin: 10px 0;
 
     p {
-      margin: 5px 0;
+        margin: 5px 0;
+      }
     }
   }
 
   h4 {
     margin: 0;
   }
-
+  
   span {
     p {
       margin-top: 5px;
@@ -113,8 +127,71 @@ code {
     flex-wrap: wrap;
     justify-content: flex-start;
 
-    p {
-      margin: 10px 25px 0 0;
+    div {
+      border: 1px solid $dark-blue;
+      border-radius: 5px;
+      margin: 5px 10px;
+      padding: 5px;
+      background-color: $dark-blue;
+      color: $white;
+      cursor: pointer;
     }
+  }
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu {
+  background: $pure-white;
+  border-radius: 5px;
+  border: 1px solid $dark-blue;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    font-size: 16px;
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+}
+
+.menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu-trigger {
+  background: $pure-white;
+  border-radius: 5px;
+  border: 1px solid $dark-blue;
+  cursor: pointer;
+  height: 35px;
+  width: 80px;
+  padding: 4px 6px;
+  transition: box-shadow 0.4s ease;
+
+  &:hover {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  span {
+    font-weight: 700;
+    margin: 0 10px;
   }
 }

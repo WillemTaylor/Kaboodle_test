@@ -1,31 +1,46 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import expandListing from './ListingSlice';
-import data from '../../accommodation.json';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+// import { useSelector } from 'react-redux';
+import { dropdownSlice } from '../dropdown/TypeDropdownSlice';
 
+function Listing(props) {
+    const [ showText, hideText ] = useState(false);
+    const [ add, minus ] = useState(true);
+    const [ typeDropdown ] = useState(dropdownSlice)
+    const { listing } = props;
 
-export function ShowListing() {
-    const dispatch = useDispatch();
-    const [ listings ] = useState(data);
-    console.log(listings.accommodations);
+    useEffect(() => {
+        // Update the listings being shown based on type selected in dropdown
+        console.log(props)
+        // console.log(useSelector(state => state.filterType))
+    })
 
     return (
-        <ul>
-            {listings.accommodations.map((listing) => (
-                <div className="listing" key={listing.id} onClick={() => dispatch(expandListing(listing.id))}>
-                    <div>
-                        <span>
-                            <h4>{listing.name}</h4>
-                            <p>{listing.country.name}</p>
-                        </span>
-                        <h4>{listing.type.name}</h4>
-                    </div>
-                    <div className="description" dangerouslySetInnerHTML={{__html:listing.description}}></div>
-                    <div className="facilities">{listing.facilities.map((facility) => (
-                        <p>{facility.label}</p>
-                    ))}</div>
+        <div className="listing" key={listing.id}>
+            <div style={{ margin: '0 10px' }}>
+                <span>
+                    <h4>{listing.name}</h4>
+                    <p>{listing.country.name}</p>
+                </span>
+                {/* <h4>{props.dropdown.value.length < 1 ? listing.type.name : listing.type.name === typeDropdown}</h4> */}
+            </div>
+            <div className="description" onClick={() => {hideText(!showText); minus(!add)}}>
+                <h4>{add ? 'Show more +' : 'Hide -'}</h4>
+                {showText && <div dangerouslySetInnerHTML={{__html:listing.description}}></div>}
+            </div>
+            <div className="facilities">{listing.facilities.map((facility) => (
+                <div>
+                    <p>{facility.label}</p>
                 </div>
-            ))}
-        </ul>
+            ))}</div>
+        </div>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        type: state.dropdown.value
+    }
+}
+
+export default connect(mapStateToProps)(Listing);
