@@ -44,6 +44,13 @@ code {
   margin: 0 auto;
   font-size: calc(10px + 2vmin);
   max-width: 1200px;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .App-link {
@@ -65,7 +72,7 @@ code {
 .listing-container {
   ul {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 auto;
@@ -75,7 +82,6 @@ code {
 }
 
 .listing {
-  width: 47%;
   padding: 20px 10px;
   border: 2px solid $dark-blue;
   border-radius: 5px;
@@ -136,10 +142,49 @@ code {
       color: $white;
     }
   }
+
+  .rooms {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    h4 {
+      position: relative;
+    }
+  }
+
+  .rooms-container {
+    border: 1px solid $dark-blue;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    min-width: 170px;
+    max-width: 250px;
+    background-color: #fff8f8f3;
+
+    p, div {
+      justify-content: space-between;
+      display: flex;
+      width: 100%;
+      text-align: right;
+    }
+
+    p {
+      margin: 3px 0;
+    }
+
+    div {
+      flex-direction: column;
+    }
+  }
 }
 
 .menu-container {
   position: relative;
+  margin-left: 40px;
 }
 
 .menu {
@@ -192,5 +237,25 @@ code {
   span {
     font-weight: 700;
     margin: 0 10px;
+  }
+}
+
+.sort-container {
+  margin-right: 30px;
+  cursor: pointer;
+  background: $pure-white;
+  border-radius: 5px;
+  border: 1px solid $dark-blue;
+  width: 90px;
+  padding: 6px 6px;
+  transition: box-shadow 0.4s ease;
+
+  h5 {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  &:hover {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   }
 }

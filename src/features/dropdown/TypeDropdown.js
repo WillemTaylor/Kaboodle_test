@@ -20,7 +20,7 @@ export function TypeDropdown() {
             <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
                 <ul>
                     {types.map((type) => (
-                        <Type key={type.id} id={type.id} type={type} />
+                        <Type key={type} id={type} type={type} />
                     ))}
                 </ul>
             </nav>
